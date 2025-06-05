@@ -100,5 +100,23 @@ namespace MotivHealthToDo.Tests.Tests.Services {
             )), Times.Once);
         }
 
+        [Fact]
+        public async Task DeleteAsync_Deletes_WhenFound() {
+            var item = new ToDo { Id = 5 };
+            _repo.Setup(r => r.GetByIdAsync(5)).ReturnsAsync(item);
+
+            await _service.DeleteAsync(5);
+
+            _repo.Verify(r => r.DeleteAsync(item), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeleteAsync_Skips_WhenNotFound() {
+            _repo.Setup(r => r.GetByIdAsync(999)).ReturnsAsync((ToDo?)null);
+
+            await _service.DeleteAsync(999);
+
+            _repo.Verify(r => r.DeleteAsync(It.IsAny<ToDo>()), Times.Never);
+        }
     }
 }
