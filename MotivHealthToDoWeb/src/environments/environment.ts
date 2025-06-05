@@ -8,8 +8,8 @@ import { ToDoMockClient } from "src/app/clients/todo.mock.client";
 
 export const environment = {
   production: false,
-  // toDoClient: ToDoMockClient,
-  toDoClient: ToDoApiClient,
+  toDoClient: ToDoMockClient,
+  // toDoClient: ToDoApiClient,
   apiBaseUrl: "http://api/api"
 };
 
