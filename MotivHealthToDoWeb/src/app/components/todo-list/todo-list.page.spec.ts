@@ -45,4 +45,37 @@ describe('ToDoListPage', () => {
     expect(component.todos.length).toBe(2);
     expect(component.todos[0].name).toBe('Test A');
   });
+
+  it('should set the initial sort field on init', () => {
+    expect(component.sortField).toBe(SortField.DateAdded);
+  });
+
+  it('should call service.add when add() is triggered with valid input', () => {
+    component.newToDo = 'New Task';
+    component.add();
+    expect(todoServiceSpy.add).toHaveBeenCalledWith('New Task');
+    expect(component.newToDo).toBe('');
+  });
+
+  it('should not call add if input is empty or whitespace', () => {
+    component.newToDo = '  ';
+    component.add();
+    expect(todoServiceSpy.add).not.toHaveBeenCalled();
+  });
+
+  it('should call service.delete with the given id', () => {
+    component.delete(123);
+    expect(todoServiceSpy.delete).toHaveBeenCalledWith(123);
+  });
+
+  it('should call service.toggleComplete with the given todo', () => {
+    const todo = mockTodos[0];
+    component.toggleComplete(todo);
+    expect(todoServiceSpy.toggleComplete).toHaveBeenCalledWith(todo);
+  });
+
+  it('should call service.sort with the given sort field', () => {
+    component.sort(SortField.Name);
+    expect(todoServiceSpy.sort).toHaveBeenCalledWith(SortField.Name);
+  });
 });

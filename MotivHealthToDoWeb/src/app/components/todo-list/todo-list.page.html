@@ -6,17 +6,26 @@
 
 <ion-content class="ion-padding">
   <ion-item>
-    <ion-input [(ngModel)]="newToDo" placeholder="Add a new task"></ion-input>
-    <ion-button fill="outline">Add</ion-button>
+    <ion-input [(ngModel)]="newToDo" placeholder="Add a new task" (keyup.enter)="add()"></ion-input>
+    <ion-button (click)="add()" fill="outline">Add</ion-button>
   </ion-item>
 
+  <ion-item lines="none">
+    <ion-label>Sort by</ion-label>
+    <ion-select [(ngModel)]="sortField" (ionChange)="sort(sortField)">
+      <ion-select-option [value]="SortField.DateAdded">Date Added</ion-select-option>
+      <ion-select-option [value]="SortField.DateCompleted">Date Completed</ion-select-option>
+      <ion-select-option [value]="SortField.Name">Name</ion-select-option>
+    </ion-select>
+  </ion-item>
 
   <ion-list>
-    <ion-item *ngFor="let todo of todos">
+    <ion-item *ngFor="let todo of todos" (click)="toggleComplete(todo)"
+      [class.completed]="!!todo.dateCompleted">
       <ion-label [ngStyle]="{ 'text-decoration': todo.dateCompleted ? 'line-through' : 'none' }">
         {{ todo.name }}
       </ion-label>
-      <ion-button slot="end" color="danger">
+      <ion-button slot="end" color="danger" (click)="delete(todo.id)">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-button>
     </ion-item>
