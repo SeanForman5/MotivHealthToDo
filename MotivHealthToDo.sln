@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivHealthToDoApi", "MotivHealthToDoApi\MotivHealthToDoApi.csproj", "{208DE7D4-0BB4-4920-B44E-EEBE3A6D2D78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotivHealthCore", "MotivHealthCore\MotivHealthCore.csproj", "{EDE18E43-EF7E-4036-AEA2-F055D20438D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{208DE7D4-0BB4-4920-B44E-EEBE3A6D2D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{208DE7D4-0BB4-4920-B44E-EEBE3A6D2D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{208DE7D4-0BB4-4920-B44E-EEBE3A6D2D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{208DE7D4-0BB4-4920-B44E-EEBE3A6D2D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDE18E43-EF7E-4036-AEA2-F055D20438D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDE18E43-EF7E-4036-AEA2-F055D20438D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDE18E43-EF7E-4036-AEA2-F055D20438D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDE18E43-EF7E-4036-AEA2-F055D20438D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F84CED4-7BC1-43E6-811B-90997D75A23F}
+	EndGlobalSection
+EndGlobal
