@@ -1,0 +1,44 @@
+name: CI Build and Test (Windows)
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # .NET setup and tests
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore and Build API
+        run: |
+          dotnet restore ./MotivHealthToDoApi
+          dotnet build --no-restore ./MotivHealthToDoApi
+
+      - name: Run API Tests
+        run: dotnet test --no-build --collect:"XPlat Code Coverage" ./MotivHealthToDoApi.Tests
+
+      # Node + Angular setup and tests
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install and Test Angular
+        working-directory: ./MotivHealthToDoWeb
+        run: |
+          npm ci
+          npm run test -- --watch=false --code-coverage
+
+      - name: Build Angular App
+        working-directory: ./MotivHealthToDoWeb
+        run: npm run build

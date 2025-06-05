@@ -10,7 +10,7 @@ namespace MotivHealthCore.Interfaces {
         Task<List<ToDo>> GetAllAsync();
         Task<ToDo?> GetByIdAsync(Int64 id);
         Task<ToDo> CreateAsync(ToDo toDo);
-        Task UpdateAsync(Int64 id, ToDo toDo);
-        Task DeleteAsync(Int64 id);
+        Task<Boolean> UpdateAsync(Int64 id, ToDo toDo);
+        Task<Boolean> DeleteAsync(Int64 id);
     }
 }

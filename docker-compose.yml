@@ -9,10 +9,42 @@ services:
       - ./MotivHealthToDoApi:/app
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Username=postgres;Password=postgres;Database=todo_db
     depends_on:
       - db
     networks:
       - appnet
+
+  client:
+    build:
+      context: ./MotivHealthToDoWeb
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./MotivHealthToDoWeb:/app
+      - /app/node_modules 
+    depends_on:
+      - api
+    networks:
+      - appnet
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: todo_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - appnet
+
+volumes:
+  pgdata:
 
 networks:
   appnet:
