@@ -2,8 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { ToDoApiClient } from "src/app/clients/todo.client";
+import { ToDoMockClient } from "src/app/clients/todo.mock.client";
+
+
 export const environment = {
-  production: false
+  production: false,
+  // toDoClient: ToDoMockClient,
+  toDoClient: ToDoApiClient,
+  apiBaseUrl: "http://api/api"
 };
 
 /*

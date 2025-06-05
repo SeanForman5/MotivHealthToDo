@@ -1,0 +1,19 @@
+ion-item {
+    --background: white;
+    --transition: background-color 0.3s ease;
+
+    ion-label {
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+}
+
+
+ion-item.completed {
+    --background: #e8f5e9;
+
+    ion-label {
+        text-decoration: line-through;
+        color: #388e3c;
+        font-weight: 500;
+    }
+}
