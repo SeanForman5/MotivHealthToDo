@@ -25,7 +25,7 @@ jobs:
           dotnet build --no-restore ./MotivHealthToDoApi
 
       - name: Run API Tests
-        run: dotnet test --no-build --collect:"XPlat Code Coverage" ./MotivHealthToDoApi.Tests
+        run: dotnet test --no-build --collect:"XPlat Code Coverage" ./MotivHealthToDo.Tests
 
       # Node + Angular setup and tests
       - name: Setup Node.js

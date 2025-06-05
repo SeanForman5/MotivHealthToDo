@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using MotivHealthCore.DataAccess.Interfaces;
 using MotivHealthCore.DataAccess.Models;
@@ -12,11 +13,12 @@ using System.Threading.Tasks;
 namespace MotivHealthToDo.Tests.Tests.Services {
     public class ToDoServiceTests {
         private readonly Mock<IToDoRepository> _repo;
+        private readonly Mock<ILogger<ToDoService>> _logger;
         private readonly ToDoService _service;
 
         public ToDoServiceTests() {
             _repo = new Mock<IToDoRepository>();
-            _service = new ToDoService(_repo.Object);
+            _service = new ToDoService(_repo.Object, _logger.Object);
         }
 
         [Fact]
